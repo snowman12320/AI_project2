@@ -1,0 +1,53 @@
+html{
+    font-family: "微軟正黑體";
+}
+img{
+    height:350px;
+    margin: 40px;
+}
+.center{
+    width: 600px;
+    border:1px solid  black;
+    height: 150px;
+    background:#fffdfd;
+    font-size: 15px;
+  }
+
+td {
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	background: #fff;
+	padding: 6px 6px 6px 12px;
+	color:black;
+    text-align:center;
+}
+
+.person{
+    position: absolute;
+    left: 30%;
+}
+body{
+    margin-left: 5%;
+}
+.body2{
+    position: absolute;
+    left: 55%;
+    top: 3%;
+    right: 5%;
+}
+
+.font1{
+    margin-left: 10%;
+}
+.font2{
+    margin-left: 10%;
+}
+.font3{
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    /**text-decoration:underline;**/
+    font-weight: bolder;
+}
+.font4{
+    font-weight: bolder;
+}

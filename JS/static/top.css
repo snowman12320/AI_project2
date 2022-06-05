@@ -1,0 +1,77 @@
+
+.h1{
+    color:#684;
+    font-family:"微軟正黑體";
+    font-size: 50px;
+    text-align:center;
+    letter-spacing: 26px; /*間距*/
+}
+
+.keyword{
+    color:red; 
+    text-align:center;
+    letter-spacing: 10px;
+    font-size: 30px;
+}
+
+#loading{ 
+    background:#FF6100; /*設定進度條的顏色*/ 
+    height:20px; /*設定進度條的高度*/ 
+    position:fixed; /*設定進度條跟隨螢幕滾動*/ 
+    top:0; /*將進度條固定在頁面頂部*/ 
+    z-index:99999 /*提高進度條的優先層級，避免被其他層遮擋*/ 
+  } /*https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/274715/*/ 
+
+.fix{
+  position: fixed;
+  top: 20px;
+}
+
+@keyframes change-color {
+  10% {background-color: red;width: 10%;}
+  20% {background-color: orange;width: 20%;}
+  40% {background-color: yellow;width: 40%;}
+  60% {background-color: green;width: 60%;}
+  80% {background-color: blue;width: 80%;}
+  100% {background-color: purple;width: 100%;}
+}
+.box {
+  width: 2000px;
+  height: 5px;
+  position: relative;
+  position: absolute;
+}
+.box-animation {
+  animation-name: change-color;
+  animation-duration: 40s;
+  animation-iteration-count: infinite;
+  animation-delay: 10s;
+}
+
+.fmap {
+  position: absolute;
+  visibility: hidden;
+  left: 70px;
+  color: #fff;
+  font-size: .8em;
+  background: #346e7a;
+  padding: 5px;
+  border-radius: 5px;
+}
+td:hover .fmap{
+  visibility: visible;
+  transition: visibility 0s .2s;
+}
+
+.loading{
+  background:black;
+  color:white;
+  width:1000px;
+  height:2000px; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 40px;
+  letter-spacing: 10px;  
+}

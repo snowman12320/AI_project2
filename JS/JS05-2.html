@@ -1,0 +1,200 @@
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<div class="topbar" style="position: fixed;width:max-content;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <img src="/static/okwhite2.jpeg" style="width:130px;margin-left:5%;" >
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a style="margin-left:520px;font-size: 18px;"class="nav-link active" aria-current="page" href="/">首頁</a>
+              </li>
+              <li class="nav-item">
+                <a style="font-size: 18px;"class="nav-link" href="index">實價登陸</a>
+              </li>
+              <li class="nav-item">
+                <a style="font-size: 18px;"class="nav-link" href="/house_forecast">房價預測</a>
+              </li>
+              <li class="nav-item">
+                <a style="font-size: 18px;"class="nav-link" href="/house_forecast">團隊介紹</a>
+              </li>             
+            </ul>
+            
+            <span class="navbar-text">
+              資料取自於內政部實價登錄
+            </span>
+          </div>
+        </div>
+      </nav>  
+</div>
+
+
+
+<html  class="">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/static/team.css"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='team.css') }}">
+    </head>
+
+    <img id="showTable" onclick="showTable()"  href="javascript:;" style="margin-left:1750px;position: fixed;width: 90;margin-top: 700px;" src="/static/計算機.jpeg" >
+
+    
+    <div class="design ">
+        設計理念
+    </div>
+    
+    
+
+    <table  id="hideTable" style="margin-left: 1500px;position: fixed;border: 5px;background-color:plum;">
+        <tr>
+            <td align="center" colspan="6" > 
+                <input align="right" type="text" value="0" id="box"  />
+            </td>
+        </tr>
+        <tr>
+            <td >    <input id="mAdd" type="button" value="M+" onClick="buttonM('M+')">    </td>
+            <td >    <input id="mMinus" type="button" value="M-" onClick="buttonM('M-')">   </td>
+            <td >    <input id="mC" type="button" value="MC" onClick="buttonM('MC')">       </td>
+            <td >    <input id="mR" type="button" value="MR" onClick="buttonM('MR')">       </td>
+        </tr>
+    
+    
+        <tr align="center" >
+            <td>    <input  type="button" value="7" onClick="numBtn('7')">  </td>
+            <td>    <input  type="button" value="8" onClick="numBtn('8')">  </td>
+            <td>    <input  type="button" value="9" onClick="numBtn('9')">  </td>
+            <td>    <input  type="button" value="+" onClick="operBtn('+')"> </td>
+        </tr>
+    
+        <tr align="center">
+            <td>    <input  type="button" value="4" onClick="numBtn('4')">  </td>
+            <td>    <input  type="button" value="5" onClick="numBtn('5')">  </td>
+            <td>    <input  type="button" value="6" onClick="numBtn('6')">  </td>
+            <td>    <input  type="button" value="-" onClick="operBtn('-')"> </td>
+        </tr>
+    
+        <tr align="center">
+            <td>    <input  type="button" value="1" onClick="numBtn('1')">  </td>
+            <td>    <input  type="button" value="2" onClick="numBtn('2')">  </td>
+            <td>    <input  type="button" value="3" onClick="numBtn('3')">  </td>
+            <td>    <input  type="button" value="*" onClick="operBtn('*')"> </td>
+        </tr>
+    
+        <tr align="center">
+            <td>    <input  type="button" value="0" onClick="numBtn('0')">  </td>
+            <td>    <input  type="button" value="." onClick="numBtn('.')">  </td>
+            <td>    <input  type="button" value="=" onClick="equal()">      </td>
+            <td>    <input  type="button" value="/" onClick="operBtn('/')"> </td>
+        </tr>
+    </table>
+
+
+    <body background="/static/back5.jpg" ">
+    
+    
+
+
+    <script>
+    
+        var temp=0;  //暫存被運算數    
+        var strOper=0;  //暫存運算符號    
+        var valueM=0;  //m+ m- mc mr 暫存使用
+       
+        //數字鍵與小數點 
+        function numBtn(str) {   
+            //避免填入運算後的數字的後面    
+            if (strOper==null) {
+                document.getElementById("box").value = str;
+                strOper=0;
+                return;
+            };
+           if (document.getElementById("box").value==0) { 
+                document.getElementById("box").value = str;
+            } else {
+            document.getElementById("box").value += str;
+            }   
+        } 
+    
+        //運算符號   
+        function operBtn(str){    
+            //不按等號的連續運算  
+            equal();   
+            valueA=document.getElementById("box").value;
+            strOper=str;  
+            document.getElementById("box").value=0;
+        }
+    
+        //等於 
+        function equal(){     
+            switch (strOper){
+                case '+':
+                    document.getElementById("box").value=parseFloat(valueA)+parseFloat(document.getElementById("box").value);
+                    break;
+                case '-':
+                    document.getElementById("box").value=parseFloat(valueA)-parseFloat(document.getElementById("box").value);
+                    break;
+                case '*':
+                    document.getElementById("box").value=parseFloat(valueA)*parseFloat(document.getElementById("box").value);
+                    break;
+                case '/':
+                    document.getElementById("box").value=parseFloat(valueA)/parseFloat(document.getElementById("box").value);
+                    break;
+                default:
+                    break;
+            }       
+            //防呆用   
+            temp=null;
+            strOper=null;
+        }
+    
+        //M鍵 
+        function buttonM(str){   
+            switch  (str) {
+                case 'M+':
+                    valueM += parseFloat(document.getElementById("box").value);
+                    break;
+                case 'M-':
+                    valueM -= parseFloat(document.getElementById("box").value);
+                    break;
+                case 'MC':
+                    temp=0;
+                    strOper=0;
+                    valueM=0;
+                    document.getElementById("box").value = '0';
+                    break;
+                case 'MR':
+                    document.getElementById("box").value  =  parseFloat(valueM);
+                    //防呆用  
+                    temp=null;
+                    strOper=null;
+                    break;
+                default:
+                    break;
+            }  
+        }
+
+        var isShow = false;
+        function showTable() {
+            if(!isShow) {
+                isShow = true;
+                document.getElementById('hideTable').style.display='';
+            }
+            else {
+                isShow = false;
+                document.getElementById('hideTable').style.display='none';
+            }
+        }
+
+    </script>
+
+
+
+
+</html>
+
