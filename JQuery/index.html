@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+
+        <!-- 使用animation -->
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      />
+    </head>
+
+    <body>
+        <div class="block" ></div>
+        <button type="button"  id="hideBtn">按我</button>
+        <button type="button"  id="addAnimate">切換動畫</button>
+
+
+
+    </body>
+
+
+
+
+
+
+
+    <style>
+        .block{
+                width: 200px ;
+                height: 200px;
+                background-color:  black;
+        }
+    </style>
+
+
+    <!-- 使用JQ ,放尾段才能用-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <!-- 使用JS，放JQ後面 -->
+    <script src="all.js"></script>
+
+    <!-- 編程可以出現提示字 -->
+    <script> 
+        // 初始化行為，確認有互連
+        $(function(){
+            console.log('插旗');
+        })
+
+        //
+
+        $('#hideBtn').on('click',function(){
+            //下面是 要操作的元素，上面是事件監聽哪一種、要做什麼事
+            $('.block').toggle();
+        });
+
+        //
+
+        $('#addAnimate').on('click',function(){
+            $('.block').toggleClass('animate__animated animate__swing');
+        });
+
+        
+    </script>
+</html>
+
+<!-- 練習JQ -->
+<!-- https://bejewled-air-4cb.notion.site/jQuery-bfecd92fe9684993a25fc4a1c8b0e697 -->
+<!-- https://www.youtube.com/watch?v=G1ziB-TvWy4 -->
+<!-- https://oscarotero.com/jquery/   速查表-->
+<!-- 各種效果 https://animate.style/ -->
