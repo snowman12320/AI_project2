@@ -83,5 +83,5 @@ const server = http.createServer((request, response) => { //創建服務器 、�
 });
 
 server.listen(port, ip, () => { ///監聽前端的請求 端口、地址、回調函數，這個函數沒有參數
-  console.log(`Server is running at http://${ip}:${port}`); ///變量要用模塊包起來
+  console.log(`Server is running at http://${ip}:${port}`); ///變量要用模塊包起來 
 });
