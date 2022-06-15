@@ -1,0 +1,123 @@
+<!-- https://codepen.io/snowman12320/pen/BaYMzKX -->
+
+<template>
+  <div id="app">
+    <div class="container"> 
+      <div class="my-3"> 
+        <button
+          type="button"
+          class="btn btn-danger"  
+          @click="reNew()"  
+        >
+        <!-- 重新渲染 -->
+          下面一位
+        </button>
+      </div>
+      <div class="row">
+        <!-- //迴圈 -->
+        <div class="col-md-4 mb-3" v-for="item in data"> 
+          <div class="card h-100">
+             <!-- //最愛按鈕 -->
+            <div class="position-absolute" style="top: 20px; right: 20px"> 
+              <button
+                type="button"
+                class="btn btn-outline-danger rounded-pill"
+                @click="item.favorite = true"
+              >
+                <i class="bi bi-heart fs-5" v-if="!item.favorite"></i>
+                <i class="bi bi-heart-fill fs-5" v-else></i>
+              </button>
+            </div>
+
+            <!-- //使用照片大小 -->
+            <img v-if="status" :src="item.picture.large" class="card-img-top" />  
+            <img v-else :src="item.picture.thumbnail" class="card-img-top" />
+            
+            <div class="card-body">  
+                <!-- //個人資料 -->
+              <h5 class="card-title">
+                {{ item.name.title }} {{ item.name.first }}   
+                {{ item.name.last }}(
+                <span v-if="item.gender === 'male'">👨</span>
+                <span v-else>👩</span>
+                )
+              </h5>
+              <p class="card-text">
+                Email：
+                <a :href="`mailto:${item.email}`">{{ item.email }}</a>
+              </p>
+              <p class="card-text">
+                Phone:
+                <a :href="`tel:${item.phone}`">{{ item.phone }}</a>
+              </p>
+              <p class="card-text">
+                Cell:
+                <a :href="`tel:${item.cell}`">{{ item.cell }}</a>
+              </p>
+              <p class="card-text">City: {{ item.location.city }}</p>
+              <p class="card-text">State: {{ item.location.state }}</p>
+              <p class="card-text">Country: {{ item.location.country }}</p>
+              <p class="card-text">Postcode: {{ item.location.postcode }}</p>
+              
+              <p> 
+                <!-- //地址 -->
+                Address：
+                <a
+                  :href="`https://www.google.com.tw/maps/search/${item.location.city}${item.location.state}`"
+                  target="_blank"
+                >
+                  {{ item.location.city }} {{ item.location.state }}
+                  {{ item.location.country }} {{ item.location.postcode }}
+                </a>
+              </p>
+              
+              <p class="card-text"> 
+                <!-- //資訊 -->
+                description: {{ item.location.timezone.description }}
+              </p>
+              
+              <p class="card-text"> 
+                <small class="text-muted">dob：{{ item.dob.date }}</small>
+              </p>
+              
+              <p class="card-text">      
+                <!-- 註冊日 -->
+                <small class="text-muted">
+                  registered：{{ item.registered.date }}
+                </small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      status: true,
+      data: []
+    };
+  },
+  methods: {
+    reNew() {
+      axios.get("https://randomuser.me/api/?results=5").then(  
+        //ajax的axios套件，帶出每筆資料
+      (response) =>
+        // console.log(response)
+        (this.data = response.data.results)
+    );
+    }
+  },
+  mounted() {
+    this.reNew()
+  }
+};
+</script>
+
+<style lang="scss">
+
+</style>
