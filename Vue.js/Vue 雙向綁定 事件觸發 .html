@@ -13,6 +13,14 @@
           下面一位
         </button>
       </div>
+      
+      <div class="my-3">
+          <button type="button" class="btn btn-outline-primary" @click="status = !status">切換大頭貼解析度</button>
+          現在圖片解析度：
+          <span v-if="status">清晰</span>
+          <span v-else>模糊</span>
+        </div>
+      
       <div class="row">
         <!-- //迴圈 -->
         <div class="col-md-4 mb-3" v-for="item in data"> 
