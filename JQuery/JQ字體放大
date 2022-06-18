@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
 	<meta charset="UTF-8">
 	<title>1229 JQuery</title>
-	<!-- <script src="js/jquery-3.2.1.js"></script>
-	<script src="js/1229.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 
 	<style type="text/css">
@@ -18,7 +16,6 @@
 			display: inline-block;
 			text-decoration: none;
 		}
-		
 	</style>
 </head>
 
@@ -26,16 +23,13 @@
 <header>
    <h1>滑鼠移入，按鈕字體放大</h1>
 </header>
-<div id="content">
 
+<div>
 	<a href="#" class="button">字體放大</a>
-</div>
-
-
-	
+</div>	
 </body>
-<script>
-    
+
+<script>    
     $(function(){
         $('.button').hover(
             
@@ -44,4 +38,5 @@
         });
     });
 </script>
+
 </html>
