@@ -113,14 +113,14 @@ export default {
   methods: {
     reNew() {
       axios.get("https://randomuser.me/api/?results=5").then(  
-        //ajax的axios套件，帶出每筆資料
+        //axios物件，帶出每筆資料
       (response) =>
         // console.log(response)
         (this.data = response.data.results)
     );
     }
   },
-  mounted() {
+  mounted() {  //生命週期，每次先刷新
     this.reNew()
   }
 };
