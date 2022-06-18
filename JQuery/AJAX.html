@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+    function loadJSON() { //取得資料
+      var xhttp = new XMLHttpRequest(); //建立物件函式
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          displayData(this); //成功取得資料傳入顯示數據的函式
+        }
+      };
+      xhttp.open("GET", "https://gorest.co.in/public-api/users", true);
+      xhttp.send();
+    }
+    function displayData(xhttp) { //顯示數據函式
+      jsonData = JSON.parse(xhttp.responseText);  //轉成JSON物件操作
+      var newContent = "" 
+      // console.log(jsonData.data)
+      for (index in jsonData.data) {
+        newContent += "<p>" + jsonData.data[index].name + "</p>"; //透過index取得name就好
+      }
+      document.getElementById("json-content").innerHTML = newContent;  //新增
+    }
+    function clearJSON() {
+      document.getElementById("json-content").innerHTML = "";  //刪除
+    }
+    </script>
+  </head>
+
+  <body>
+    <h2>AJAX DEMO</h2>
+    <button type="button" onclick="loadJSON()">Get User Names</button>
+    <button type="button" onclick="clearJSON()">Clear JSON</button>
+    <div id="json-content"></div>
+  </div>
+  </body>
+</html>
+
+<!-- 
+13 傳統 ：form > server > newHTML   渲染全部 
+   ajax ：request > data(json , xml) > update DOM    局部渲染-->
+
+   <!-- ajax  由 json/XML 透過 JS函式取資料、動態改變DOM ，渲染/HTML/CSS  -->
